@@ -70,13 +70,14 @@ public class SearchBlock {
         waiter = new WebDriverWait(driver, 60);
     }
 
+    @Step(value = "Поиск фразы: {phrase}")
     public void searchPhrase(String phrase) {
         searchButton.click();
         searchBox.sendKeys(phrase);
         waiter.until(ExpectedConditions.visibilityOfElementLocated(projectsHeaderSelector));
     }
-//    @Description(value = "Проверка отображения блоков по имени: {block}")
 
+    @Step(value = "Проверка отображения результатов поиска")
     public void checkSearchResultBlocks() {
         professionsHeader.isDisplayed();
         coursesHeader.isDisplayed();
